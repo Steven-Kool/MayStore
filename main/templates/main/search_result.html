@@ -1,0 +1,85 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block title %}List Of Items | May Store{% endblock title %}
+
+{% block content %}
+	<link rel="stylesheet" href="{% static 'main/css/list_view.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+{% endblock content %}
+
+{% block body %}
+	<div class="fake_body">
+		<div class="header">
+
+			<div class="goback_holder">
+				<a href="{% url 'main:list_view' %}" class="a">
+					BACK
+				</a>
+			</div>
+
+			<div class="search_holder">
+				<form method="GET" action="{% url 'main:search_result' %}" class="form" id="searchForm">
+					<input type="text" class="searchbar" name="keyword" placeholder="Search item...">
+					<button type="SUBMIT" class="btn" id="BTN">Search</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="middle_holder">
+			<div class="leader_holder">
+				{% if keyword %}
+					<div class="leader">
+						Search result for <span style="color: #10c910; margin-left: 10px; font-style: italic;">{{ keyword }}</spa>
+					</div>
+				{% else %}
+					<div class="leader">
+						Items that are available at May Store
+					</div>
+				{% endif %}
+			</div>
+
+			<div class="list_holder">
+				<div class="list" style="border-bottom: 2px #000000 double; font-weight: 700;">
+					<div class="name box" style="border-right: 2px #000000 solid;">ITEM</div>
+					<div class="type box" style="border-right: 2px #000000 solid;">TYPE</div>
+					<div class="quantity box" style="border-right: 2px #000000 solid;">QUANTITY</div>
+					<div class="condition box" style="border-right: 2px #000000 solid;">STOCK ON MARKET</div>
+					<div class="price box">PRICE</div>
+				</div>
+
+				<div class="item_holder" id="itemHolder">
+					{% if items %}
+						{% for item in items %}
+							<div class="list" style="border-bottom: 2px #c933a3 solid;">
+								<div class="name box" style="border-right: 2px #c933a3 solid;">{{ item.name }}</div>
+								{% if item.type == 'F-l' %}
+									<div class="type box" style="border-right: 2px #c933a3 solid;">Foreign Liquor</div>
+								{% elif item.type == 'L-l' %}
+									<div class="type box" style="border-right: 2px #c933a3 solid;">Local Liquor</div>
+								{% elif item.type == 'D' %}
+									<div class="type box" style="border-right: 2px #c933a3 solid;">Drink</div>
+								{% endif %}
+								<div class="quantity box" style="border-right: 2px #c933a3 solid;">{{ item.quantity }}</div>
+								<div class="condition box" style="border-right: 2px #c933a3 solid;">{{ item.stock_condition }}</div>
+								<div class="price box">{{ item.price }} KS</div>
+							</div>
+						{% endfor %}
+					{% else %}
+						<div class="list box" style="border-bottom: 2px #e92424 dashed; font-weight: 600; font-size: 18px; color: #e00000">
+							No Result Found
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% block script %}
+   <script src="{% static 'main/js/list_view.js' %}"></script>
+{% endblock script %}
+
+{% endblock body %}

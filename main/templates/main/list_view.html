@@ -1,0 +1,80 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block title %}List Of Items | May Store{% endblock title %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'main/css/list_view.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+{% endblock content %}
+
+{% block body %}
+   <div class="fake_body">
+      <div class="header">
+
+         <div class="goback_holder">
+            <a href="{% url 'main:index' %}" class="a">
+               Home
+            </a>
+         </div>
+
+         <div class="filter_holder">
+
+            <div class="text">
+               Filter :
+            </div>
+
+            <div class="filter">
+               <div class="select">
+                  <span class="selected">
+                        All
+                  </span>
+                  <div class="caret"></div>
+               </div>
+               <ul class="dropdown" id="filter_dropdown">
+                  <li class="active" data-filter="all">All</li>
+                  <li data-filter="L-l">Local Liquor</li>
+                  <li data-filter="F-l">Foreign Liquor</li>
+                  <li data-filter="D">Drinks</li>
+               </ul>
+            </div>
+
+         </div>
+
+         <div class="search_holder">
+            <form method="GET" action="{% url 'main:search_result' %}" class="form" id="searchForm">
+               <input type="text" class="searchbar" name="keyword" placeholder="Search item...">
+               <button type="SUBMIT" class="btn" id="BTN">Search</button>
+            </form>
+         </div>
+      </div>
+
+      <div class="middle_holder">
+         <div class="leader_holder">
+            <div class="leader">Items that are available at May Store</div>
+         </div>
+
+         <div class="list_holder" id="listScroller">
+            <div class="list" id="listHolder" style="border-bottom: 2px #000000 double; font-weight: 700;">
+               <div class="name box boxes" id="name" style="border-right: 2px #000000 solid;">ITEM</div>
+               <div class="type box boxes" id="type" style="border-right: 2px #000000 solid;">TYPE</div>
+               <div class="quantity box boxes" id="quantity" style="border-right: 2px #000000 solid;">QUANTITY</div>
+               <div class="condition box boxes" id="condition" style="border-right: 2px #000000 solid;">STOCK ON MARKET</div>
+               <div class="price box boxes" id="price">PRICE</div>
+            </div>
+
+            <div class="item_holder" id="itemHolder">
+               <!-- Json data go here -->
+            </div>
+         </div>
+      </div>
+   </div>
+
+{% block script %}
+   <script src="{% static 'main/js/list_view.js' %}"></script>
+{% endblock script %}
+
+{% endblock body %}

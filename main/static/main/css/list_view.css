@@ -1,0 +1,345 @@
+/* Scrollbar */
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    position: absolute;
+    background-color: #535353;
+    border-radius: 4px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: #585858;
+}
+
+.list_holder::-webkit-scrollbar {
+    display: none;
+}
+
+.fake_body {
+    width: 100%;
+    margin: 0;
+    padding: 0 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+}
+
+.header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    background-color: #27282b;
+}
+
+.goback_holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 80px 0 30px;
+}
+
+.filter_holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px 0 0;
+}
+
+.search_holder {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_holder .form {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 40px 0 0;
+}
+
+.form .searchbar {
+    flex: 1;
+    height: 24px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    padding: 10px 90px 10px 10px;
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+}
+
+.form .searchbar::placeholder {
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(116, 116, 116);
+}
+
+.form .btn {
+    width: 70px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #fff;
+    background-color: #27282b;
+    margin-left: -80px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.form .btn:hover {
+    background-color: #6d6d6d;
+}
+
+.filter_holder .text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+    color: #c9c8c8;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.filter {
+    min-width: 15px;
+    position: relative;
+    margin: 2px;
+    letter-spacing: 1px;
+    font-family: Helvetica, sans-serif;
+}
+
+.filter * {
+    box-sizing: border-box;
+}
+
+.select {
+    width: 210px;
+    background-color: #14161d;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    border-radius: 5px;
+    padding: 10px 20px;
+    box-shadow: 
+    2 0 2px #313642,
+    -2 0 2px #313642,
+    0 2 2px #313642,
+    0 -2 2px #313642;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.select_clicked {
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8px #26489a;
+}
+.select:hover {
+    background-color: #323741;
+}
+
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+.caret_rotate {
+    transform: rotate(180deg);
+}
+
+.dropdown {
+    list-style: none;
+    padding: 5px 10px;
+    background-color: #323741;
+    border: 1px #363a43 solid;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    color: #9fa5b5;
+    position: absolute;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height 0.3s, visibility 0.3s;
+    z-index: 3;
+}
+.dropdown a {
+    text-decoration: none;
+    color: #fff;
+}
+.dropdown li {
+    padding: 10px 6px;
+    margin: 5px 0;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+}
+.dropdown li:hover {
+    background-color: #2a2b35;
+}
+
+.active {
+    background-color: #23242a;
+}
+
+.menu_open {
+    visibility: visible;
+    max-height: 900px;
+}
+
+/* goback */
+.goback_holder .a {
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #66e2e2;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.goback_holder .a:hover {
+    color: #198a8a;
+}
+
+/* Middle */
+.middle_holder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ /* change background-color  */
+ .change_background {
+    background-color: rgb(32, 32, 32);
+    color: #979797;
+    transition: all 0.3s;
+}
+
+.list_holder {
+    width: 95%;
+    min-height: 160px;
+    max-height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    box-sizing: border-box;
+    box-shadow: 
+    3px 0 2px rgba(0, 0, 0, 0.3),
+    -3px 0 2px rgba(0, 0, 0, 0.3),
+    0 3px 2px rgba(0, 0, 0, 0.3),
+    0 -3px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    border: 2px #161616 solid;
+    background-color: #cecece;
+    overflow: scroll;
+    z-index: 2;
+}
+
+.leader_holder {
+    width: inherit;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 20px 0 50px 0;
+    font-size: 30px;
+    color: #f84242;
+    font-family: 'Belanosima', sans-serif;
+    text-shadow: 0 0 2px #3141cf;
+}
+
+.leader {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 0 0 0 40px;
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    box-sizing: border-box;
+    font-family: 'Merriweather Sans', sans-serif;
+    z-index: 3;
+}
+
+.list_holder .item_holder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    z-index: 1;
+}
+
+.box {
+    margin: 0;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.list .name {
+    flex: 3;
+}
+.list .type {
+    flex: 1.2;
+}
+.list .quantity {
+    flex: 0.8;
+}
+.list .condition {
+    flex: 1.2;
+}
+.list .price {
+    flex: 1.8;
+}

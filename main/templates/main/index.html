@@ -1,0 +1,143 @@
+{% extends 'main/layout.html' %}
+
+{% load static %}
+
+{% block title %}Home | May Store{% endblock title %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'main/css/index.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Fuggles&family=Gasoek+One&family=Oleo+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fuggles&family=Gasoek+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&family=Fuggles&family=Gasoek+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock content %}
+
+{% block body %}
+	<div class="fake_body">
+
+		<section>
+
+			<div class="background_holder" id="backgroundHolder">
+				<img src="{% static 'main/img/background.jpg' %}" class="background">
+				<div class="blur_holder"></div>
+				<div class="text_image_holder" id="textImageHolder">
+
+					<div class="text_holder">
+						<span style="font-family: 'Gasoek One', sans-serif; font-size: 80px; color: #ffffff; font-weight: 400;
+						text-shadow: 8px 5px #000000; margin-right: 20px;">
+								MAY
+						</span>
+						<span style="font-family: 'Dancing Script', cursive; font-size: 80px; color: #d42121; font-weight: 600;
+						text-shadow: 2px 2px #000000;">Store</span>
+					</div>
+
+				</div>
+
+				<div class="content_holder">
+					<span class="content">
+						<span style="font-size: 50px;">Since our inception in 2019,</span>
+						<br><span style="font-weight: bold; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">May Store</span> has been dedicated to 
+						providing the South Okkalapa community with an unparalleled selection of exceptional beverages. With 
+						a commitment to quality, outstanding customer service, and a passion for exploration, we have become the 
+						trusted destination for discerning individuals seeking the finest spirits, wines, and beers. Whether you're 
+						looking for a rare find, expert recommendations, or simply a convenient and enjoyable shopping experience, 
+						our team is here to cater to your every need. Join our community of beverage enthusiasts and elevate your 
+						drinking experience with <span style="font-weight: bold; font-size: 20px; font-family: Arial, Helvetica, sans-serif;">May Store</span>. 
+						Cheers to unforgettable moments and remarkable libations!
+					</span>
+				</div>
+
+			</div>
+		
+		</section>
+
+		<div class="middle_part_holder">
+
+			<div class="hidden_down" style="display: flex; justify-content: center; align-items: center; font-size: 60px; 
+			color: rgb(40, 70, 204); font-family: 'Russo One', sans-serif;">List Of Items</div>
+
+			<div class="list_header_holder hidden_up" id="listScroller">
+
+				<div class="list_holder over_header" id="listHolder" style="border-bottom: 2px #d267e7 solid;">
+					<div class="item_name box hidden_down scrollHeader" id="item" style="border-right: 2px #d267e7 solid;">ITEM NAME</div>
+					<div class="quantity box hidden_down scrollHeader" id="quantity" style="border-right: 2px #d267e7 solid;">QUANTITY</div>
+					<div class="price box hidden_down scrollHeader">PRICE</div>
+				</div>
+
+				{% if not items %}
+					<div class="list_holder hidden_slide" style = "border-bottom: 2px #797979 dashed;">No Result Found</div>
+				{% else %}
+					{% for item in items %}
+						<div class="list_holder hidden_slide" style="border-bottom: 2px #797979 dashed;">
+								<div class="item_name box hidden_down" style="border-right: 2px #797979 solid;">{{ item.name }}</div>
+								<div class="quantity box hidden_down" style="border-right: 2px #797979 solid;">
+									{{ item.quantity }}
+								</div>
+								<div class="price box hidden_down">{{ item.price }} KS</div>
+						</div>
+					{% endfor %}
+				{% endif %}
+
+			</div>
+
+			<div class="button_holder">
+				<a href="{% url 'main:list_view' %}" style="text-decoration: none;">
+					<button class="btn hidden_slide">View All</button>
+				</a>
+			</div>
+
+		</div>
+
+		<div class="lower_part_holder">
+
+			<div class="liner hidden_liner"></div>
+
+			<div class="all_inner_boxes">
+					<div class="left">
+						<div class="header hidden_slide">
+							LOCATION
+						</div>
+
+						<div class="lower_content_holder">
+							<div class="content hidden_slide">
+									<span>No. 656, Shin Thidat St, (7) Quarter,<br>South Okkalapa Tsp, Yangon,<br>Myanmar.</span>
+							</div>
+						</div>
+					</div>
+
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3818.4800092034566!2d96.18182927477014!3d16.8521332831275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c193cc454455bd%3A0x8e65ee899a18c4b7!2sMay%20Store!5e0!3m2!1sen!2smm!4v1686992998900!5m2!1sen!2smm" class="map hidden_slide" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+
+			<div class="liner hidden_liner"></div>
+
+			<div class="all_inner_boxes">
+					<div class="left">
+						<div class="header hidden_slide">
+							CONTACT
+						</div>
+
+						<div class="lower_content_holder">
+							<div class="content hidden_slide">
+									<span>Phone : 09 459 220 361, 09 5143 162<br>Email : ohnmarkyi04@gmail.com, stevendool15@gmail.com</span>
+							</div>
+						</div>
+					</div>
+			</div>
+		
+		</div>
+
+	</div>
+
+{% block script %}
+   <script src="{% static 'main/js/index.js' %}"></script>
+{% endblock script %}
+
+{% endblock body %}
+    
+
